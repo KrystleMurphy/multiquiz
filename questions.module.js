@@ -1,4 +1,4 @@
-var questions = [
+export var questions = [
     {
         question: "here is a question1, can you guess the answer?",
         choices: ["wrong", "wrong", "correct"],
@@ -24,5 +24,5 @@ var questions = [
     },
 ];
 
-// Export the questions array
-export { questions };
+// // Export the questions array
+// export { questions };
