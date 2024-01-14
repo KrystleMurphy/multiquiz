@@ -20,9 +20,14 @@ start.addEventListener('click', function () {
     remainingTime--;
     timeEl.textContent = remainingTime;
 
-    if (remainingTime === 0) {
+    if (remainingTime === 0 || questions.length === 0) {
       clearInterval(intervalId);
-      // GAME OVER - add code...
+      // Show the end screen and hide the question container
+      var endScreen = document.getElementById('end-screen');
+      var questionContainer = document.getElementById('question-container');
+      endScreen.style.display = 'block';
+      questionContainer.style.display = 'none';
+      // Handle end of quiz - add code...
     }
   }
 
@@ -34,6 +39,7 @@ start.addEventListener('click', function () {
   // Display the first question
   randomQuestion();
 });
+
 
 function randomQuestion() {
   if (questions.length === 0) {
@@ -90,9 +96,17 @@ function randomQuestion() {
 // WHEN all questions are answered or the timer reaches 0
 // THEN the game is over
 
-if (time === 0 || ) { 
+if (remainingTime === 0 || questions.length === 0) {
+    clearInterval(intervalId);
+    // Show the end screen and hide the question container
+    var endScreen = document.getElementById('end-screen');
+    var questionContainer = document.getElementById('question-container');
+    endScreen.style.display = 'block';
+    questionContainer.style.display = 'none';
+    // Handle end of quiz - add code...
     
-}
+    
+  }
 
 
 
