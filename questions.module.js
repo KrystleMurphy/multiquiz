@@ -23,3 +23,6 @@ var questions = [
         answer: "correct"
     },
 ];
+
+// Export the questions array
+export { questions };
