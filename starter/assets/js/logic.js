@@ -12,7 +12,7 @@ start.addEventListener('click', function() {
   // Start the timer
   timeEl.textContent = duration;
   intervalId = setInterval(countDown, 1000);
-  
+
   function countDown() {
     duration--;
     timeEl.textContent = duration;
@@ -25,22 +25,22 @@ start.addEventListener('click', function() {
   }
 
   // Display the first question
-  question();
+  randomQuestion();
 });
 
-function question() {
-  // Implement logic to display the first question
+function randomQuestion() {
+  // Select a random question from the questions array
+  var randomIndex = Math.floor(Math.random() * questions.length);
+  var question = questions[randomIndex].question;
+  var choices = questions[randomIndex].choices;
+
+  // Display the question and choices
+  var questionTitle = document.getElementById('question-title');
+  var answerChoices = document.getElementById('choices');
+
+  questionTitle.textContent = question;
+  answerChoices.textContent = choices.join(', ');
 }
-
-
-// console.log("");
-
-
-
-
-
-// WHEN I answer a question
-// THEN I am presented with another question
 
 
 
