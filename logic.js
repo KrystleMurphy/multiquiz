@@ -43,6 +43,7 @@ function randomQuestion() {
     var randomIndex = Math.floor(Math.random() * questions.length);
     var question = questions[randomIndex].question;
     var choices = questions[randomIndex].choices;
+    var correctAnswer = questions[randomIndex].answer;
 
     // Display the question
     var questionTitle = document.getElementById('question-title');
@@ -57,11 +58,34 @@ function randomQuestion() {
         choiceButton.textContent = choice;
         answerChoices.appendChild(choiceButton);
 
-        // Add event listener to each choice button
-        choiceButton.addEventListener('click', function () {
-            randomQuestion();
-        });
+  // Show the feedback container
+  var resultMessage = document.getElementById('result-message');
+  resultMessage.style.display = 'block';
+
+    // Add event listener to each choice button
+    
+    choiceButton.addEventListener('click', function () {
+        if (choice === correctAnswer) {
+          // Handle correct answer
+          choiceButton.classList.add('correct');
+          // Display a message indicating the correct answer
+          var resultMessage = document.getElementById('result-message');
+          resultMessage.textContent = 'Correct!';
+        } else {
+          // Handle wrong answer
+          choiceButton.classList.add('wrong');
+          // Display a message indicating the wrong answer
+          var resultMessage = document.getElementById('result-message');
+          resultMessage.textContent = 'Wrong!';
+        }
+        randomQuestion();
+      });
+  
+      if (choice === correctAnswer) {
+        choiceButton.classList.add('correct-answer');
+      }
     });
+
 }
 
 // WHEN I answer a question incorrectly
