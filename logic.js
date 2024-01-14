@@ -1,7 +1,7 @@
 // GIVEN I am taking a code quiz
 
 // Import the questions array from questions.js
-import { questions } from './questions.module';
+import { questions } from './questions.module.js';
 
 // WHEN I click the start button
 // THEN a timer starts and I am presented with a question
@@ -28,7 +28,11 @@ start.addEventListener('click', function () {
 
     // Hide the start screen
     var startScreen = document.getElementById('start-screen');
+    var questionContainer = document.getElementById('question-container');
     startScreen.style.display = 'none';
+
+    // Show the question container
+    questionContainer.style.display = 'block';
 
     // Display the first question
     randomQuestion();
@@ -40,14 +44,25 @@ function randomQuestion() {
     var question = questions[randomIndex].question;
     var choices = questions[randomIndex].choices;
 
-    // Display the question and choices
+    // Display the question
     var questionTitle = document.getElementById('question-title');
-    var answerChoices = document.getElementById('choices');
-
     questionTitle.textContent = question;
-    answerChoices.textContent = choices.join(', ');
-}
 
+    // Display the choices
+    var answerChoices = document.getElementById('choices');
+    answerChoices.innerHTML = '';
+
+    choices.forEach(function (choice) {
+        var choiceButton = document.createElement('button');
+        choiceButton.textContent = choice;
+        answerChoices.appendChild(choiceButton);
+
+        // Add event listener to each choice button
+        choiceButton.addEventListener('click', function () {
+            randomQuestion();
+        });
+    });
+}
 
 // WHEN I answer a question incorrectly
 // THEN time is subtracted from the clock
