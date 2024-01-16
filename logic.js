@@ -28,6 +28,9 @@ start.addEventListener('click', function () {
             var questionContainer = document.getElementById('question-container');
             endScreen.style.display = 'block';
             questionContainer.style.display = 'none';
+            var finalScore = document.getElementById('final-score');
+            finalScore.textContent = score;
+
         }
     }
 
@@ -83,6 +86,7 @@ function randomQuestion() {
                 // All questions have been displayed
                 // Handle end of quiz - add code...
                 return;
+                
             }
             randomQuestion();
         });
@@ -93,16 +97,17 @@ function randomQuestion() {
                 return true;
             }
             return false;
+            // display the final score
         }
-
-
-
-
-
-
+        
+        
+        
+        
+        
+        
     });
-
-
+    
+    
 }
 
 // WHEN all questions are answered or the timer reaches 0
@@ -117,8 +122,6 @@ if (remainingTime === 0 || questions.length === 0) {
     questionContainer.style.display = 'none';
     // Handle end of quiz - add code...
 
-    var finalScore = document.getElementById('final-score');
-    finalScore.textContent = score;
 }
 
 
