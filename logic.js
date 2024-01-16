@@ -47,7 +47,6 @@ start.addEventListener('click', function () {
 function randomQuestion() {
     if (questions.length === 0) {
         // All questions have been displayed
-        // Handle end of quiz - add code...
         return;
     }
 
@@ -86,7 +85,7 @@ function randomQuestion() {
                 // All questions have been displayed
                 // Handle end of quiz - add code...
                 return;
-                
+
             }
             randomQuestion();
         });
@@ -99,15 +98,10 @@ function randomQuestion() {
             return false;
             // display the final score
         }
-        
-        
-        
-        
-        
-        
+
     });
-    
-    
+
+
 }
 
 // WHEN all questions are answered or the timer reaches 0
@@ -120,11 +114,17 @@ if (remainingTime === 0 || questions.length === 0) {
     var questionContainer = document.getElementById('question-container');
     endScreen.style.display = 'block';
     questionContainer.style.display = 'none';
-    // Handle end of quiz - add code...
 
 }
 
-
-
 // WHEN the game is over
 // THEN I can save my initials and score
+submit.addEventListener('click', function (event) {
+
+    var initials = document.getElementById('submit').value;
+    var score = document.getElementById('score').value;
+
+
+    localStorage.setItem('initials', initials)
+    localStorage.setItem('score', score);
+});
